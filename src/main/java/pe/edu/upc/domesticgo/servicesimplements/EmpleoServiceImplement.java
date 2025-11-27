@@ -39,4 +39,11 @@ public class EmpleoServiceImplement implements IEmpleoService {
     public Empleo searchId(int id) {
         return empRepository.findById(id).orElse(new Empleo());
     }
+
+    // Metodos personalizados
+
+    @Override
+    public List<Empleo> searchName(String na) {
+        return empRepository.buscarNombre(na);
+    }
 }

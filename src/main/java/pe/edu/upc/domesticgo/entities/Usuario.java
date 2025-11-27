@@ -1,56 +1,80 @@
 package pe.edu.upc.domesticgo.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Usuario")
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
 
     @Column(name = "nombres", nullable = false, length = 100)
+    @NotNull
+    @Size(max = 100)
     private String nombres;
 
     @Column(name = "apellidoPaterno", nullable = true, length = 50)
+    @Size(max = 50)
     private String apellidoPaterno;
 
     @Column(name = "apellidoMaterno", nullable = true, length = 50)
+    @Size(max = 50)
     private String apellidoMaterno;
 
     @Column(name = "email", nullable = false, length = 100)
+    @NotNull
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "Invalid email format")
     private String email;
 
-    @Column(name = "foto", nullable = true, length = 255)
-    private String foto;
+    @Column(name = "tipoDocumento", nullable = false, length = 50)
+    @NotNull
+    private String tipoDocumento;
 
+    @Column(name = "numeroDocumento", nullable = false, length = 50)
+    @NotNull
+    @Size(min = 8, max = 20, message = "El número de documento debe tener entre 8 y 20 caracteres")
+    @Pattern(regexp = "^[0-9]+$", message = "El número de documento debe ser numérico")
+    private String numeroDocumento;
 
-    // Foreign Key @ManytoOne Rol y Empleo
+    @Column(name = "numeroCelular", nullable = false, length = 50)
+    @NotNull
+    @Size(min = 9, max = 50, message = "El número de celular debe tener al menos 9 dígitos")
+    @Pattern(regexp = "^[0-9]+$", message = "El número de celular debe contener solo números")
+    private String numeroCelular;
+
+    @Column(name = "fechaNacimiento", nullable = false)
+    private LocalDate fechaNacimiento;
 
     @ManyToOne
-    @JoinColumn(name = "idRol", nullable = false)
-    private Rol rol;  // Relación con Rol
-
-    @OneToOne
     @JoinColumn(name = "idEmpleo", nullable = false)
-    private Empleo empleo;  // Relación con Empleo
-
+    private Empleo empleo;
 
     // Constructores, Getters y Setters
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, String email, String foto, Rol rol, Empleo empleo) {
+    public Usuario(int idUsuario, String nombres, String apellidoPaterno, String apellidoMaterno, String email, String tipoDocumento, String numeroDocumento, String numeroCelular, LocalDate fechaNacimiento, Empleo empleo) {
         this.idUsuario = idUsuario;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.email = email;
-        this.foto = foto;
-        this.rol = rol;
+        this.tipoDocumento = tipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.numeroCelular = numeroCelular;
+        this.fechaNacimiento = fechaNacimiento;
         this.empleo = empleo;
     }
+
+    // Getters y Setters
 
     public int getIdUsuario() {
         return idUsuario;
@@ -92,20 +116,37 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
-    public Rol getRol() {
-        return rol;
+    public String getNumeroDocumento() {
+        return numeroDocumento;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public String getNumeroCelular() {
+        return numeroCelular;
+    }
+
+    public void setNumeroCelular(String numeroCelular) {
+        this.numeroCelular = numeroCelular;
+    }
+
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public Empleo getEmpleo() {

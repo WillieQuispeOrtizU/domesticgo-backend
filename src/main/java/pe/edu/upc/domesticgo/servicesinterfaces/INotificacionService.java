@@ -1,5 +1,6 @@
 package pe.edu.upc.domesticgo.servicesinterfaces;
 
+import pe.edu.upc.domesticgo.dtos.NotificacionesPorUsuarioDTO;
 import pe.edu.upc.domesticgo.entities.Notificacion;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface INotificacionService {
     public void delete(int id);
     public Notificacion searchId(int id);
 
+    public List<NotificacionesPorUsuarioDTO> getNotificationCountByUser();
 }

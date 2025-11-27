@@ -14,8 +14,11 @@ public class Resenia {
     @Column(name = "fechaResenia", nullable = false)
     private LocalDate fechaResenia;
 
-    @Column(name = "detalleResenia", nullable = false, length = 200)
-    private String detalleResenia;
+    @Column(name = "comentarioResenia", nullable = false, length = 200)
+    private String comentarioResenia;
+
+    @Column(name = "calificacionResenia", nullable = false)
+    private int calificacionResenia;
 
     // Foreign Keys @ManytoOne Usuario y Servicio
 
@@ -32,10 +35,11 @@ public class Resenia {
     public Resenia() {
     }
 
-    public Resenia(int idResenia, LocalDate fechaResenia, String detalleResenia, Usuario usuario, Servicio servicio) {
+    public Resenia(int idResenia, LocalDate fechaResenia, String comentarioResenia, int calificacionResenia, Usuario usuario, Servicio servicio) {
         this.idResenia = idResenia;
         this.fechaResenia = fechaResenia;
-        this.detalleResenia = detalleResenia;
+        this.comentarioResenia = comentarioResenia;
+        this.calificacionResenia = calificacionResenia;
         this.usuario = usuario;
         this.servicio = servicio;
     }
@@ -56,12 +60,24 @@ public class Resenia {
         this.fechaResenia = fechaResenia;
     }
 
-    public String getDetalleResenia() {
-        return detalleResenia;
+    public String getComentarioResenia() {
+        return comentarioResenia;
     }
 
-    public void setDetalleResenia(String detalleResenia) {
-        this.detalleResenia = detalleResenia;
+    public void setComentarioResenia(String comentarioResenia) {
+        this.comentarioResenia = comentarioResenia;
+    }
+
+    public int getCalificacionResenia() {
+        return calificacionResenia;
+    }
+
+    public void setCalificacionResenia(int calificacionResenia) {
+        if (calificacionResenia >= 1 && calificacionResenia <= 5) {
+            this.calificacionResenia = calificacionResenia;
+        } else {
+            throw new IllegalArgumentException("La puntuación debe estar entre 1 y 5.");
+        }
     }
 
     public Usuario getUsuario() {

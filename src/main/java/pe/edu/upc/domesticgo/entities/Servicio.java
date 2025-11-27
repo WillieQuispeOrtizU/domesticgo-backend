@@ -20,7 +20,6 @@ public class Servicio {
     @OneToOne
     @JoinColumn(name = "idContrato",nullable = false)
     private Contrato contrato;
-
     @ManyToOne
     @JoinColumn(name = "idReserva", nullable = false)
     private Reserva reserva;

@@ -10,6 +10,15 @@ public class ServicioDTO {
     private Contrato contrato;
     private Reserva reserva;
 
+    public ServicioDTO(int idServicio, String estadoServicio, String tipoServicio, Contrato contrato, Reserva reserva) {
+        this.idServicio = idServicio;
+        this.estadoServicio = estadoServicio;
+        this.tipoServicio = tipoServicio;
+        this.contrato = contrato;
+        this.reserva = reserva;
+    }
+    public ServicioDTO() {
+    }
     // Getters and Setters
     public int getIdServicio() {
         return idServicio;
@@ -46,8 +55,10 @@ public class ServicioDTO {
     public Reserva getReserva() {
         return reserva;
     }
-
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
     }
+
+
+
 }

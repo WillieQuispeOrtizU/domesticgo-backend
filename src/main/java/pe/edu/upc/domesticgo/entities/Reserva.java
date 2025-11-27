@@ -17,6 +17,7 @@ public class Reserva {
     @Column(name = "detalleReserva", nullable = false, length = 250)
     private String detalleReserva;
 
+
     // Constructores, Getters and Setters (falta constructores completo y llave foranea)
 
     public Reserva() {
@@ -51,4 +52,5 @@ public class Reserva {
     public void setDetalleReserva(String detalleReserva) {
         this.detalleReserva = detalleReserva;
     }
+
 }

@@ -11,4 +11,6 @@ public interface IEmpleoService {
     public void update(Empleo user);
     public void delete(int id);
     public Empleo searchId(int id);
+    // Metodos de Personalizados
+    public List<Empleo> searchName(String tipo);
 }

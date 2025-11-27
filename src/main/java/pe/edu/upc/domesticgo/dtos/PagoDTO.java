@@ -11,9 +11,11 @@ public class PagoDTO {
     private String bancoPago;
     private LocalDate fechaPago;
     private double montoPago;
+    private String estadoPago;
     private Contrato contrato;
 
     // Getters and Setters
+
     public int getIdPago() {
         return idPago;
     }
@@ -60,6 +62,14 @@ public class PagoDTO {
 
     public void setMontoPago(double montoPago) {
         this.montoPago = montoPago;
+    }
+
+    public String getEstadoPago() {
+        return estadoPago;
+    }
+
+    public void setEstadoPago(String estadoPago) {
+        this.estadoPago = estadoPago;
     }
 
     public Contrato getContrato() {

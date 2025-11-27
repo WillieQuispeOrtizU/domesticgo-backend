@@ -1,19 +1,25 @@
 package pe.edu.upc.domesticgo.dtos;
 
 import pe.edu.upc.domesticgo.entities.Empleo;
-import pe.edu.upc.domesticgo.entities.Rol;
+import pe.edu.upc.domesticgo.entities.Role;
+
+import java.time.LocalDate;
 
 public class UsuarioDTO {
     private int idUsuario;
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
+    private String tipoDocumento;
+    private String numeroDocumento;
+    private LocalDate fechaNacimiento;
+    private String numeroCelular;
     private String email;
-    private String foto;
-    private Rol rol;
+    private Role role;
     private Empleo empleo;
 
     // Getters and Setters
+
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -46,6 +52,39 @@ public class UsuarioDTO {
         this.apellidoMaterno = apellidoMaterno;
     }
 
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getNumeroCelular() {
+        return numeroCelular;
+    }
+
+    public void setNumeroCelular(String numeroCelular) {
+        this.numeroCelular = numeroCelular;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -54,20 +93,12 @@ public class UsuarioDTO {
         this.email = email;
     }
 
-    public String getFoto() {
-        return foto;
+    public Role getRole() {
+        return role;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Empleo getEmpleo() {

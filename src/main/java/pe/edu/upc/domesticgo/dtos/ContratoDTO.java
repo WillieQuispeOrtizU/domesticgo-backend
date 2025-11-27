@@ -9,8 +9,8 @@ public class ContratoDTO {
     private int idContrato;
     private LocalDate fechaInicio;
     private LocalDate fechaFinal;
-    private String archivo;
     private String descripcionContrato;
+    private String estadoContrato;
     private Usuario contratante;
     private Usuario contratado;
     private Ubicacion ubicacion;
@@ -38,14 +38,6 @@ public class ContratoDTO {
 
     public void setFechaFinal(LocalDate fechaFinal) {
         this.fechaFinal = fechaFinal;
-    }
-
-    public String getArchivo() {
-        return archivo;
-    }
-
-    public void setArchivo(String archivo) {
-        this.archivo = archivo;
     }
 
     public String getDescripcionContrato() {
@@ -78,5 +70,13 @@ public class ContratoDTO {
 
     public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
+    }
+
+    public String getEstadoContrato() {
+        return estadoContrato;
+    }
+
+    public void setEstadoContrato(String estadoContrato) {
+        this.estadoContrato = estadoContrato;
     }
 }

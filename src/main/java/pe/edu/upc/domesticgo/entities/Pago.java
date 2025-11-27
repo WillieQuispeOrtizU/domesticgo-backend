@@ -26,6 +26,8 @@ public class Pago {
     @Column(name = "montoPago",nullable = false)
     private double montoPago;
 
+    @Column(name = "estadoPago", nullable = false, length = 50)  // Se añadió este campo
+    private String estadoPago;
     // Foreign Key @ManytoOne Contrato
 
     @ManyToOne
@@ -37,13 +39,14 @@ public class Pago {
     public Pago() {
     }
 
-    public Pago(int idPago, String tipoPago, String tipoComprobante, String bancoPago, LocalDate fechaPago, double montoPago, Contrato contrato) {
+    public Pago(int idPago, String tipoComprobante, String tipoPago, String bancoPago, LocalDate fechaPago, double montoPago, String estadoPago, Contrato contrato) {
         this.idPago = idPago;
-        this.tipoPago = tipoPago;
         this.tipoComprobante = tipoComprobante;
+        this.tipoPago = tipoPago;
         this.bancoPago = bancoPago;
         this.fechaPago = fechaPago;
         this.montoPago = montoPago;
+        this.estadoPago = estadoPago;
         this.contrato = contrato;
     }
 
@@ -93,6 +96,13 @@ public class Pago {
 
     public void setMontoPago(double montoPago) {
         this.montoPago = montoPago;
+    }
+
+    public String getEstadoPago() {
+        return estadoPago;
+    }
+    public void setEstadoPago(String estadoPago) {
+        this.estadoPago = estadoPago;
     }
 
     public Contrato getContrato() {

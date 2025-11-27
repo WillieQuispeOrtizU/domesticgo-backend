@@ -8,7 +8,8 @@ import java.time.LocalDate;
 public class ReseniaDTO {
     private int idResenia;
     private LocalDate fechaResenia;
-    private String detalleResenia;
+    private String comentarioResenia;
+    private int calificacionResenia;
     private Usuario usuario;
     private Servicio servicio;
 
@@ -29,12 +30,20 @@ public class ReseniaDTO {
         this.fechaResenia = fechaResenia;
     }
 
-    public String getDetalleResenia() {
-        return detalleResenia;
+    public String getComentarioResenia() {
+        return comentarioResenia;
     }
 
-    public void setDetalleResenia(String detalleResenia) {
-        this.detalleResenia = detalleResenia;
+    public void setComentarioResenia(String comentarioResenia) {
+        this.comentarioResenia = comentarioResenia;
+    }
+
+    public int getCalificacionResenia() {
+        return calificacionResenia;
+    }
+
+    public void setCalificacionResenia(int calificacionResenia) {
+        this.calificacionResenia = calificacionResenia;
     }
 
     public Usuario getUsuario() {

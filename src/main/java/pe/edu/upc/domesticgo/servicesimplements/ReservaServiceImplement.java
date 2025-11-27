@@ -2,7 +2,6 @@ package pe.edu.upc.domesticgo.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.domesticgo.entities.Notificacion;
 import pe.edu.upc.domesticgo.entities.Reserva;
 import pe.edu.upc.domesticgo.repositories.IReservaRepository;
 import pe.edu.upc.domesticgo.servicesinterfaces.IReservaService;

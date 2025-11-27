@@ -17,11 +17,11 @@ public class Contrato {
     @Column(name = "fechaFinal", nullable = false)
     private LocalDate fechaFinal;
 
-    @Column(name = "archivo", nullable = false, length = 150)
-    private String archivo;
-
     @Column(name = "descripcionContrato", nullable = false, length = 150)
     private String descripcionContrato;
+
+    @Column(name = "estadoContrato", nullable = false, length = 50)
+    private String estadoContrato;
 
     // Foreign Keys @ManytoOne Usuario contratante y contratado, @OnetoOne Ubicacion
 
@@ -34,22 +34,21 @@ public class Contrato {
     private Usuario contratado;
 
     // Verificar si funciona el @OnetoOne sino utiliza @OnetoMany
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "idUbicacion", nullable = false)
     private Ubicacion ubicacion;
 
     // Constructores, Getters and Setters (falta constructores completo y llave foranea)
 
-
     public Contrato() {
     }
 
-    public Contrato(int idContrato, LocalDate fechaInicio, LocalDate fechaFinal, String archivo, String descripcionContrato, Usuario contratante, Usuario contratado, Ubicacion ubicacion) {
+    public Contrato(int idContrato, LocalDate fechaInicio, LocalDate fechaFinal, String descripcionContrato, String estadoContrato, Usuario contratante, Usuario contratado, Ubicacion ubicacion) {
         this.idContrato = idContrato;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
-        this.archivo = archivo;
         this.descripcionContrato = descripcionContrato;
+        this.estadoContrato = estadoContrato;
         this.contratante = contratante;
         this.contratado = contratado;
         this.ubicacion = ubicacion;
@@ -79,20 +78,20 @@ public class Contrato {
         this.fechaFinal = fechaFinal;
     }
 
-    public String getArchivo() {
-        return archivo;
-    }
-
-    public void setArchivo(String archivo) {
-        this.archivo = archivo;
-    }
-
     public String getDescripcionContrato() {
         return descripcionContrato;
     }
 
     public void setDescripcionContrato(String descripcionContrato) {
         this.descripcionContrato = descripcionContrato;
+    }
+
+    public String getEstadoContrato() {
+        return estadoContrato;
+    }
+
+    public void setEstadoContrato(String estadoContrato) {
+        this.estadoContrato = estadoContrato;
     }
 
     public Usuario getContratante() {
