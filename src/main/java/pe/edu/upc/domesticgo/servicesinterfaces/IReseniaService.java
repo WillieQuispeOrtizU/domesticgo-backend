@@ -1,5 +1,6 @@
 package pe.edu.upc.domesticgo.servicesinterfaces;
 
+import pe.edu.upc.domesticgo.dtos.DistribucionCalificacionesDTO;
 import pe.edu.upc.domesticgo.dtos.PromedioReseniaDTO;
 import pe.edu.upc.domesticgo.dtos.ReseniasPorTrabajadorDTO;
 import pe.edu.upc.domesticgo.entities.Resenia;
@@ -17,4 +18,5 @@ public interface IReseniaService {
     // Queries personalizadas
     public List<ReseniasPorTrabajadorDTO> obtenerReseniasPorTrabajador();
     List<PromedioReseniaDTO> obtenerPromedioCalificacionesPorUsuario();
+    List<DistribucionCalificacionesDTO> obtenerDistribucionCalificaciones();
 }

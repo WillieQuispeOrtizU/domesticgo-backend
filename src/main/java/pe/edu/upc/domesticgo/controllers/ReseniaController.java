@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.domesticgo.dtos.DistribucionCalificacionesDTO;
 import pe.edu.upc.domesticgo.dtos.PromedioReseniaDTO;
 import pe.edu.upc.domesticgo.dtos.ReseniaDTO;
 import pe.edu.upc.domesticgo.dtos.ReseniasPorTrabajadorDTO;
@@ -75,5 +76,10 @@ public class ReseniaController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<PromedioReseniaDTO> obtenerPromedioCalificacionesPorUsuario() {
         return reseService.obtenerPromedioCalificacionesPorUsuario();
+    }
+    @GetMapping("/distribucion-calificaciones")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<DistribucionCalificacionesDTO> obtenerDistribucionCalificaciones() {
+        return reseService.obtenerDistribucionCalificaciones();
     }
 }

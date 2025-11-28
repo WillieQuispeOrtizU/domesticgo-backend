@@ -2,6 +2,7 @@ package pe.edu.upc.domesticgo.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.domesticgo.dtos.DistribucionCalificacionesDTO;
 import pe.edu.upc.domesticgo.dtos.PromedioReseniaDTO;
 import pe.edu.upc.domesticgo.dtos.ReseniasPorTrabajadorDTO;
 import pe.edu.upc.domesticgo.entities.Resenia;
@@ -80,5 +81,26 @@ public class ReseniaServiceImplement implements IReseniaService {
         }
 
         return promedioReseniaDTOs;
+    }
+
+    @Override
+    public List<DistribucionCalificacionesDTO> obtenerDistribucionCalificaciones() {
+        List<Object[]> results = resRepository.obtenerDistribucionCalificaciones();
+        List<DistribucionCalificacionesDTO> dtos = new ArrayList<>();
+
+        // Inicializar con 0 para asegurar que existan las 5 categorías aunque no tengan votos
+        for (int i = 1; i <= 5; i++) {
+            dtos.add(new DistribucionCalificacionesDTO(i, 0L));
+        }
+
+        for (Object[] result : results) {
+            int calificacion = (Integer) result[0];
+            long cantidad = (Long) result[1];
+            // Actualizar la lista pre-llenada (índice = calificacion - 1)
+            if (calificacion >= 1 && calificacion <= 5) {
+                dtos.get(calificacion - 1).setCantidad(cantidad);
+            }
+        }
+        return dtos;
     }
 }

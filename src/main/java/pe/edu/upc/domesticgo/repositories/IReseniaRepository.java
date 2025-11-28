@@ -28,4 +28,10 @@ public interface IReseniaRepository extends JpaRepository<Resenia, Integer> {
             "GROUP BY r.usuario.idUsuario, r.usuario.nombres, r.usuario.apellidoPaterno, r.usuario.apellidoMaterno " +
             "ORDER BY promedioCalificacionResenia DESC")
     List<Object[]> getAverageRatingByUser();
+
+    @Query("SELECT r.calificacionResenia, COUNT(r) " +
+            "FROM Resenia r " +
+            "GROUP BY r.calificacionResenia " +
+            "ORDER BY r.calificacionResenia ASC")
+    List<Object[]> obtenerDistribucionCalificaciones();
 }
