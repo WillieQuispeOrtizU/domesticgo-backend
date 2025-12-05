@@ -30,7 +30,7 @@ public class UbicacionController {
 
     // Solo ADMIN puede registrar
     @PostMapping("/registrar")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('CLIENTE')")
     public void insertar(@RequestBody UbicacionDTO ubicDto){
         ModelMapper m=new ModelMapper();
         Ubicacion ubic=m.map(ubicDto, Ubicacion.class);
